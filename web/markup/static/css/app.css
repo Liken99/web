@@ -1,0 +1,96 @@
+html,body {
+    margin: 0px;
+    padding: 0px;
+}
+header {
+    background-color: black;
+    padding: 15px;
+}
+header a {
+    color: #fff;
+    padding: 0 15px;
+}
+
+.slider {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: blue;
+    color: white;
+    font-size: 42px;
+}
+.text-center {
+    text-align: center;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.film {
+    margin: 0 5px;
+    padding: 15px;
+    border: 1px solid black;
+}
+.film h3{
+    text-align: center;
+}
+.film img {
+    width: 100%;
+}
+.film .description {
+    color: crimson;
+    text-align: center;
+}
+footer {
+    text-align: center;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #a724ff;
+    color: #47ff22;
+    font-size: 19px;
+}
+.btn {
+    padding: 7px 12 px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    cursor: pointer;
+
+}
+
+.btn.btn-pay {
+    background-color: blue;
+    color: white;
+}
+.btn.btn-pay:hover {
+    background-color: darkblue;
+}
+
+.btn.btn-faw {
+    background-color: orange;
+    color: white;
+}
+.btn.btn-faw:hover {
+    background-color: orangered;
+}
+.btn.btn-card {
+    background-color: greenyellow;
+    color: white;
+}
+.btn.btn-card:hover {
+    background-color: chartreuse;
+}
+.btn-grp {
+    text-align: center;
+    /*display: flex;
+    justify-content: space-between;*/
+}
+
+nav ul {
+    display: flex;
+}
+header a:hover {
+    color: yellow;
+}
