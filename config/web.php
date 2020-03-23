@@ -50,6 +50,7 @@ $config = [
             'rules' => [
                 'films'=>'film/index',
                 'films/<id:\d+>'=>'film/view'
+
             ],
         ],
 

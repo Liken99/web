@@ -4,7 +4,8 @@
 namespace app\controllers;
 
 
-use app\models\Commentss;
+use app\models\Categories;
+use app\models\NewsComment;
 use app\models\News;
 use yii\web\Controller;
 
@@ -12,11 +13,11 @@ class NewsController extends Controller
 {
     public function actionIndex()
     {
-        $news = News::find()
+        $categories = Categories::find()
             ->orderBy(['createdAt'=>SORT_DESC])
             ->all();
         return $this->render('index',[
-            'news' =>$news
+            'categories' =>$categories
         ]);
     }
 
@@ -28,7 +29,7 @@ class NewsController extends Controller
     public function actionView($id)
     {
         $news = News::findOne(['id'=>$id]);
-        $comments = Commentss::find()
+        $comments = NewsComment::find()
             ->where(['newsId'=>$id])
             ->all();
         return $this->render('view',[
@@ -40,17 +41,4 @@ class NewsController extends Controller
     /**
      * @return string просмотр комент к фильмам
      */
-    public function actionComment($id)
-    {
-        $news = News::findOne(['id'=>$id]);
-        $comments = Commentss::find()
-            ->orderBy(['createdAt'=>SORT_DESC])
-            ->where(['newsId'=>$id])
-            ->all();
-        return $this->render('comments',[
-            'news' =>$news,
-            'comments'=>$comments
-        ]);
-    }
-
 }

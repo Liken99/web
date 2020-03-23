@@ -6,6 +6,7 @@ namespace app\controllers;
 
 use app\models\Comment;
 use app\models\Film;
+use yii\helpers\Html;
 use yii\web\Controller;
 
 class FilmController extends Controller
@@ -28,9 +29,7 @@ class FilmController extends Controller
     public function actionView($id)
     {
         $film = Film::findOne(['id'=>$id]);
-        $comments = Comment::find()
-            ->where(['filmId'=>$id])
-            ->all();
+        $comments = $film->comments;
         return $this->render('view',[
             'film' =>$film,
             'comments'=>$comments
@@ -51,6 +50,18 @@ class FilmController extends Controller
             'film' =>$film,
             'comments'=>$comments
         ]);
+    }
+
+    public function actionCreate()
+    {
+        $model = new Film();
+        $model->load(\Yii::$app->request->post(), ''); //загружаем данные
+
+        if($model->save()){//загружаем
+            \Yii::$app->session->setFlash("success");//говорим что успешно
+        return $this->refresh();//перезагружаем страницу
+        }
+        return $this->render('create');
     }
 
 }

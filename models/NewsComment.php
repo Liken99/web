@@ -5,24 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "commentss".
+ * This is the model class for table "NewsComments".
  *
  * @property int $id
- * @property string $text
- * @property string $createdAt
- * @property string $updatedAt
- * @property int $newsId
+ * @property string $text Текст
+ * @property string $createdAt Дата создания
+ * @property string $updatedAt Дата изменения
+ * @property int $newsId Новости
  *
  * @property News $news
  */
-class Commentss extends \yii\db\ActiveRecord
+class NewsComment extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'commentss';
+        return 'NewsComments';
     }
 
     /**
@@ -31,9 +31,9 @@ class Commentss extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'text', 'createdAt', 'updatedAt', 'newsId'], 'required'],
-            [['id', 'newsId'], 'integer'],
+            [['text', 'createdAt', 'updatedAt', 'newsId'], 'required'],
             [['createdAt', 'updatedAt'], 'safe'],
+            [['newsId'], 'integer'],
             [['text'], 'string', 'max' => 256],
             [['newsId'], 'exist', 'skipOnError' => true, 'targetClass' => News::class(), 'targetAttribute' => ['newsId' => 'id']],
         ];
@@ -46,10 +46,10 @@ class Commentss extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'text' => 'Text',
-            'createdAt' => 'Created At',
-            'updatedAt' => 'Updated At',
-            'newsId' => 'News ID',
+            'text' => 'Текст',
+            'createdAt' => 'Дата создания',
+            'updatedAt' => 'Дата изменения',
+            'newsId' => 'Новости',
         ];
     }
 
