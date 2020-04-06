@@ -15,6 +15,10 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '1324321321',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -48,14 +52,22 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'films'=>'film/index',
-                'films/<id:\d+>'=>'film/view'
+                [
+                    'class' => \yii\rest\UrlRule::class,
+                    'controller' => ['v1/film','v1/comment'],
+                    'prefix' => 'api'
+                ]
 
             ],
         ],
 
     ],
     'params' => $params,
+    'modules' => [
+        'v1' => [
+            'class' => 'app\modules\v1\v1Module'
+        ]
+    ]
 ];
 
 if (YII_ENV_DEV) {

@@ -15,7 +15,7 @@ use Yii;
  *
  * @property Film $film
  */
-class Comment extends \yii\db\ActiveRecord
+class Comment extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -31,11 +31,11 @@ class Comment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text', 'createdAt', 'filmId'], 'required'],
+            [['text', 'filmId'], 'required'],
             [['createdAt', 'updatedAt'], 'safe'],
             [['filmId'], 'integer'],
             [['text'], 'string', 'max' => 256],
-            [['filmId'], 'exist', 'skipOnError' => true, 'targetClass' => Film::class(), 'targetAttribute' => ['filmId' => 'id']],
+            [['filmId'], 'exist', 'skipOnError' => true, 'targetClass' => Film::class, 'targetAttribute' => ['filmId' => 'id']],
         ];
     }
 
@@ -60,6 +60,6 @@ class Comment extends \yii\db\ActiveRecord
      */
     public function getFilm()
     {
-        return $this->hasOne(Film::class(), ['id' => 'filmId']);
+        return $this->hasOne(Film::class, ['id' => 'filmId']);
     }
 }

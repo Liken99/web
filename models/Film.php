@@ -17,7 +17,7 @@ use yii\db\Expression;
  *
  * @property Comment[] $comments
  */
-class Film extends \yii\db\ActiveRecord
+class Film extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -40,18 +40,6 @@ class Film extends \yii\db\ActiveRecord
     }
 
 
-    public function behaviors()
-    {
-        return [
-            [
-                'class'=>TimestampBehavior::class,
-                'createdAtAttribute'=>'createdAt',
-                'updatedAtAttribute'=>'updatedAt',
-                'value'=>new Expression('now()')
-            ]
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -69,4 +57,16 @@ class Film extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Comment::class, ['filmId'=>'id']);
     }
+
+    /**
+     *
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(),[
+            'comments'
+        ]);
+    }
 }
+
+
