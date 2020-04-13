@@ -54,7 +54,7 @@ $config = [
             'rules' => [
                 [
                     'class' => \yii\rest\UrlRule::class,
-                    'controller' => ['v1/film','v1/comment'],
+                    'controller' => ['v1/film','v1/comment', 'v1/user'],
                     'prefix' => 'api'
                 ]
 
