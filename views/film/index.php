@@ -5,12 +5,10 @@ use yii\helpers\Html;
 ?>
 
 <h1>Фильмы</h1>
-<?php foreach ($films as $film): ?>
-<article>
+<p>Счетчик:<span class="count"></span></p>
 
-    <h3>
-       <?= Html::a($film->title, ['film/view', 'id'=>$film->id])?>
-    </h3>
-    <p><?= $film->id?></p>
-</article>
-<?php endforeach;?>
+<p>
+    <button class="btn btn-success btn-timer">Выключено</button>
+    <button class="btn btn-warning btn-clear">Очистить</button>
+</p>
+<section class="films-list"> </section>

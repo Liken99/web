@@ -1,0 +1,12 @@
+<?php
+
+
+namespace app\modules\v1\controllers;
+
+
+use yii\rest\ActiveController;
+
+class ReviewController extends ActiveController
+{
+    public $modelClass = 'app\models\Review';
+}
