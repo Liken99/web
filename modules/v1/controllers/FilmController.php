@@ -6,7 +6,7 @@ use yii\rest\ActiveController;
 use yii\rest\Controller;
 use yii\web\NotFoundHttpException;
 
-class FilmController extends ActiveController
+class FilmController extends ApiController
 {
     public $modelClass= 'app\models\Film';
 }
