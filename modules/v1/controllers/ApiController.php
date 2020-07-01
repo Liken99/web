@@ -37,7 +37,7 @@ class ApiController extends ActiveController
             'rateLimiter' => [
                 'class' => RateLimiter::className(),
             ],
-            'cors' =>[
+            'corsFilter' =>[
                 'class' => Cors::class,
                 'except' =>['options']
             ]

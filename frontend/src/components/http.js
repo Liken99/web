@@ -5,7 +5,7 @@ import axios from "axios";
  * @type {AxiosInstance}
  */
 const HTTP = axios.create({
-    baseURL: 'http://localhost:1001/api/v1',
+    baseURL: 'http://localhost:1001/api/v1/',
     headers: {
         'Content-Type': 'application/json',
         //'Authorization': 'Bearer 3S06Dml8Htz1YDQgSwRKE2BM_aoBm2E6'

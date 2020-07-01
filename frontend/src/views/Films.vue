@@ -1,25 +1,27 @@
 <template>
     <div class="films">
-        <h1>Фильмы</h1>
+        <h1>This is films</h1>
         <article v-for="film in films">
             <h4>{{film.title}}</h4>
-            <Comments :comments="film.comments"></Comments>
+            <Comments :film="film" :comments="film.comments"></Comments>
         </article>
     </div>
 </template>
 
 <script>
-    import Comments from "../components/Comments";
-    import HTTP from "../components/http";
+    import Comments from "../components/comments";
+    import HTTP from "../components/axios";
     export default {
-        name: "Films",
+        name: "films",
         components: {Comments},
-        data() {
+        data(){
             return {
-                films: []
+              films:[
+
+              ]
             };
         },
-        created() {
+        created(){
             HTTP.get('/films')
                 .then(response => (this.films = response.data));
         }
